@@ -99,6 +99,13 @@ public class PokerTableController {
 	@FXML
 	private Label lblPos4Name;
 
+	@FXML private HBox hBoxDeck;
+	
+	@FXML private HBox hboxP1Cards;
+	@FXML private HBox hboxP2Cards;
+	@FXML private HBox hboxP3Cards;
+	@FXML private HBox hboxP4Cards;
+	
 	@FXML
 	private void initialize() {
 		imgViewDealerButtonPos3.setVisible(true);
@@ -180,7 +187,7 @@ public class PokerTableController {
 
 		btnStartGame.setDisable(HubPokerTable.getHashPlayers().size() > 0 ? false : true);
 
-		FadeButton(btnStartGame);
+		FadeButton(btnStartGame); // line 198 in video
 		Iterator it = HubPokerTable.getHashPlayers().entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry) it.next();
@@ -236,6 +243,17 @@ public class PokerTableController {
 
 	public void Handle_GameState(GamePlay HubGamePlay) 
 	{
+		//Set the Dealer Face Down card
+		hBoxDeck.getChildren().clear();
+		
+		/*Jessica - 
+		 * ImageView imgBottomCard - new ImageView(
+		 new Image(getClass().getResourceAsStream("/img/ *something here to fix error
+		 hBoxDeck.getChildren().add(imgBottomCard);
+		 */
+		
+		//int iDraw = HubGamePlay.getDrawCnt().getDrawNo();
+		
 		/*
 		imgViewDealerButtonPos1.setVisible(false);
 		imgViewDealerButtonPos2.setVisible(false);
@@ -245,6 +263,37 @@ public class PokerTableController {
 
 		//TODO - Lab #5: Check to see if you're the dealer..  If you are, make the imgViewDealerButtonX visible = true
 		
+		 /* Jessica - couldn't see all of it
+		 * for (int i: HubGamePlay.GetOrder(HubGamePlay.getGameDea....
+		 * {
+		 *     if (HubGamePlay.getPlayerByPosition(i) != null)
+		 *     {
+		 *         Player p = HubGamePlay.getPlayerByPosition(i);
+		 *         Hand h = HubGamePlay.getPlayerHand(p.getPlayer] *IDK if that bracket is supposed to be there
+		 * 
+		 *         for (Card c: h.getCardsInHand())
+		 *         {
+		 *             ImageView imgCard - new ImageView(
+		 *                     new image(getClass().getResourceAsS.....
+		 *             switch(i)
+		 *             {
+		 *             case 1:
+		 *                 hboxP1Cards.getChildren().add(imgCard)...
+		 *                 break;
+		 *             case 2:
+		 *                 hboxP2Cards.getChildren().add(imgCard)...
+		 *                 break;
+		 *             case 3:
+		 *                 hboxP3Cards.getChildren().add(imgCard)...
+		 *                 break;
+		 *             case 4:
+		 *                 hboxP4Cards.getChildren().add(imgCard)...
+		 *                 break;
+		 *             }
+		 *          }
+		 *       }
+		 *   }
+		 */
 	}
 	@FXML
 	void btnStart_Click(ActionEvent event) {
@@ -252,6 +301,13 @@ public class PokerTableController {
 		int iRuleNbr = Integer.parseInt(mainApp.getRuleName().replace("PokerGame", ""));
 		eGame Game = eGame.getGame(iRuleNbr);
 		act.seteGame(Game);
+		
+		
+		// Clear the Cards in each players hands
+		hboxP1Cards.getChildren().clear();
+		hboxP2Cards.getChildren().clear();
+		hboxP3Cards.getChildren().clear();
+		hboxP4Cards.getChildren().clear();
 		
 		mainApp.messageSend(act);
 	}

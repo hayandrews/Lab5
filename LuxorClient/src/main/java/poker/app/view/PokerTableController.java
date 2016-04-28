@@ -246,11 +246,9 @@ public class PokerTableController {
 		//Set the Dealer Face Down card
 		hBoxDeck.getChildren().clear();
 		
-		/*Jessica - 
-		 * ImageView imgBottomCard - new ImageView(
-		 new Image(getClass().getResourceAsStream("/img/ *something here to fix error
-		 hBoxDeck.getChildren().add(imgBottomCard);
-		 */
+		ImageView imgBottomCard - new ImageView(
+				new Image(getClass().getResourceAsStream("/img/b1fh.png", 75, 75, true, true); //something else?
+		hBoxDeck.getChildren().add(imgBottomCard);
 		
 		//int iDraw = HubGamePlay.getDrawCnt().getDrawNo();
 		
@@ -264,30 +262,30 @@ public class PokerTableController {
 		//TODO - Lab #5: Check to see if you're the dealer..  If you are, make the imgViewDealerButtonX visible = true
 		
 		 /* Jessica - couldn't see all of it
-		 * for (int i: HubGamePlay.GetOrder(HubGamePlay.getGameDea....
+		 * for (int i: HubGamePlay.GetOrder(HubGamePlay.getGameDealer().getiPlayerPosition....
 		 * {
 		 *     if (HubGamePlay.getPlayerByPosition(i) != null)
 		 *     {
 		 *         Player p = HubGamePlay.getPlayerByPosition(i);
-		 *         Hand h = HubGamePlay.getPlayerHand(p.getPlayer] *IDK if that bracket is supposed to be there
+		 *         Hand h = HubGamePlay.getPlayerHand(p.getPlayerID());
 		 * 
 		 *         for (Card c: h.getCardsInHand())
 		 *         {
 		 *             ImageView imgCard - new ImageView(
-		 *                     new image(getClass().getResourceAsS.....
+		 *                     new image(getClass().getResourceAsStream.....
 		 *             switch(i)
 		 *             {
 		 *             case 1:
-		 *                 hboxP1Cards.getChildren().add(imgCard)...
+		 *                 hboxP1Cards.getChildren().add(imgCard);
 		 *                 break;
 		 *             case 2:
-		 *                 hboxP2Cards.getChildren().add(imgCard)...
+		 *                 hboxP2Cards.getChildren().add(imgCard);
 		 *                 break;
 		 *             case 3:
-		 *                 hboxP3Cards.getChildren().add(imgCard)...
+		 *                 hboxP3Cards.getChildren().add(imgCard);
 		 *                 break;
 		 *             case 4:
-		 *                 hboxP4Cards.getChildren().add(imgCard)...
+		 *                 hboxP4Cards.getChildren().add(imgCard);
 		 *                 break;
 		 *             }
 		 *          }

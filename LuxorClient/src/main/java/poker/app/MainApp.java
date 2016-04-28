@@ -123,7 +123,7 @@ public class MainApp extends Application {
 		setPlayer(new Player(strPlayerName, pClient.getID()));
 		
 		initRootLayout();
-
+		
 		showPokerTable();		
 	}
 
@@ -210,8 +210,7 @@ public class MainApp extends Application {
 	}
 
 	public void messageSend(final Object message)
-	{
-		//System.out.println("Sending message " + pClient.getID() );
+	{//System.out.println("Sending message " + pClient.getID() );
 		pClient.messageSend(message);	
 	}
 	
@@ -230,8 +229,7 @@ public class MainApp extends Application {
 		 * messageSend - One single place to send messages
 		 */
 		protected void messageSend(Object message)
-		{
-			//System.out.println("PokerClient.messageSend");
+		{//System.out.println("PokerClient.messageSend");
 			resetOutput();
 			super.send(message);
 		}

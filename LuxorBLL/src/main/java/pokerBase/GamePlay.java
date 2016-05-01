@@ -188,6 +188,16 @@ public class GamePlay implements Serializable   {
 		
 		return pl;
 	}
+	
+	public Hand getPlayerHand(Hand hand){
+		return hand;
+		/*TODO might need to return a different kind of object*/
+	}
+	
+	public Hand getCommonHand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	/*
 	public GamePlayPlayerHand FindCommonHand(GamePlay gme)
 	{

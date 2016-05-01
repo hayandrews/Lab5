@@ -12,6 +12,7 @@ import exceptions.DeckException;
 import netgame.common.Hub;
 import pokerBase.Action;
 import pokerBase.Card;
+import pokerBase.CardDraw;
 import pokerBase.Deck;
 import pokerBase.GamePlay;
 import pokerBase.GamePlayPlayerHand;
@@ -129,7 +130,7 @@ public class PokerHub extends Hub {
 				
 				if (p == HubGamePlay.getPlayerNextToAct()) {
 					try {
-						throw new Exception("Dealer and next to act are the same?")
+						throw new Exception("Dealer and next to act are the same?");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -158,6 +159,7 @@ public class PokerHub extends Hub {
 			//System.out.println("Message Received by Hub");
 			
 		}
+	}
 
 		private void DealCards(CardDraw cd) throws DeckException {
 			for (int i = 0; i < cd.getCardCountDrawn().getCardCount(); i++)
@@ -167,9 +169,9 @@ public class PokerHub extends Hub {
 						// If Player at the position exists... and the their hand
 						// isn't folded, deal a card
 						if ((HubGamePlay.getPlayerByPosition(n) != null)
-								&& ((HubGamePlay.getPlayerHand(HubGamePlay.getPlayerByPosition(n).g //if player hand is not folded
+								&& ((HubGamePlay.getPlayerHand(new GamePlayPlayerHand(HubGamePlay, HubGamePlay.getPlayerByPosition(n)).getHand()))) //if player hand is not folded
 										.isFolded() == false) {
-									HubGamePlay.getPlayerHand(HubGamePlay.getPlayerByPosition(n).getPlayer
+									HubGamePlay.getPlayerHand(new GamePlayPlayerHand(HubGamePlay, HubGamePlay.getPlayerByPosition(n)).getHand())//getPlayer method to finish getPlayerHand
 											.Draw(HubGamePlay.getGameDeck());
 								}
 					}
@@ -177,7 +179,7 @@ public class PokerHub extends Hub {
 				}
 				else if (cd.getCardDestination() == eCardDestination.Community)
 				{
-					HubGamePlay.getCommonHand().Draw(HubGamePlay.getGamedeck());
+					HubGamePlay.getCommonHand().Draw(HubGamePlay.getGameDeck());
 				}
 
 				/*

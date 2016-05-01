@@ -246,8 +246,11 @@ public class PokerTableController {
 		//Set the Dealer Face Down card
 		hBoxDeck.getChildren().clear();
 		
-		ImageView imgBottomCard - new ImageView(
-				new Image(getClass().getResourceAsStream("/img/b1fh.png", 75, 75, true, true); //something else?
+		Image imgB = new Image(getClass().getResourceAsStream("/img/b1fh.png"));
+		ImageView imgBottomCard = new ImageView(imgB);
+		imgBottomCard.setPreserveRatio(true);
+		imgBottomCard.setFitWidth(75);
+		imgBottomCard.setFitHeight(75);
 		hBoxDeck.getChildren().add(imgBottomCard);
 		
 		//int iDraw = HubGamePlay.getDrawCnt().getDrawNo();

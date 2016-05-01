@@ -255,46 +255,58 @@ public class PokerTableController {
 		
 		//int iDraw = HubGamePlay.getDrawCnt().getDrawNo();
 		
-		/*
+		
 		imgViewDealerButtonPos1.setVisible(false);
 		imgViewDealerButtonPos2.setVisible(false);
 		imgViewDealerButtonPos3.setVisible(false);
 		imgViewDealerButtonPos4.setVisible(false);
-		*/
+		
 
 		//TODO - Lab #5: Check to see if you're the dealer..  If you are, make the imgViewDealerButtonX visible = true
+
 		
-		 /* Jessica - couldn't see all of it
-		 * for (int i: HubGamePlay.GetOrder(HubGamePlay.getGameDealer().getiPlayerPosition....
-		 * {
-		 *     if (HubGamePlay.getPlayerByPosition(i) != null)
-		 *     {
-		 *         Player p = HubGamePlay.getPlayerByPosition(i);
-		 *         Hand h = HubGamePlay.getPlayerHand(p.getPlayerID());
-		 * 
-		 *         for (Card c: h.getCardsInHand())
-		 *         {
-		 *             ImageView imgCard - new ImageView(
-		 *                     new image(getClass().getResourceAsStream.....
-		 *             switch(i)
-		 *             {
-		 *             case 1:
-		 *                 hboxP1Cards.getChildren().add(imgCard);
-		 *                 break;
-		 *             case 2:
-		 *                 hboxP2Cards.getChildren().add(imgCard);
-		 *                 break;
-		 *             case 3:
-		 *                 hboxP3Cards.getChildren().add(imgCard);
-		 *                 break;
-		 *             case 4:
-		 *                 hboxP4Cards.getChildren().add(imgCard);
-		 *                 break;
-		 *             }
-		 *          }
-		 *       }
-		 *   }
-		 */
+		Iterator it = HubGamePlay.getGamePlayers().entrySet().iterator();
+			while (it.hasNext()) {
+				Map.Entry pair = (Map.Entry) it.next();
+				Player p = (Player) pair.getValue();
+				switch (p.getiPlayerPosition()) {
+				case 1:
+					if (p.getPlayerID().equals(HubGamePlay.getGameDealer())) {	
+						imgViewDealerButtonPos1.setVisible(true);
+						imgViewDealerButtonPos2.setVisible(false);
+						imgViewDealerButtonPos3.setVisible(false);
+						imgViewDealerButtonPos4.setVisible(false);
+						}
+					break;
+					
+				case 2:
+					if (p.getPlayerID().equals(HubGamePlay.getGameDealer())) {	
+						imgViewDealerButtonPos1.setVisible(false);
+						imgViewDealerButtonPos2.setVisible(true);
+						imgViewDealerButtonPos3.setVisible(false);
+						imgViewDealerButtonPos4.setVisible(false); }
+					break;
+				case 3:
+					if (p.getPlayerID().equals(HubGamePlay.getGameDealer())) {	
+						imgViewDealerButtonPos1.setVisible(false);
+						imgViewDealerButtonPos2.setVisible(false);
+						imgViewDealerButtonPos3.setVisible(true);
+						imgViewDealerButtonPos4.setVisible(false); }
+					break;
+				case 4:
+					if (p.getPlayerID().equals(HubGamePlay.getGameDealer())) {	
+						imgViewDealerButtonPos1.setVisible(false);
+						imgViewDealerButtonPos2.setVisible(false);
+						imgViewDealerButtonPos3.setVisible(false);
+						imgViewDealerButtonPos4.setVisible(true); }
+					break;
+				default:		
+						imgViewDealerButtonPos1.setVisible(false);
+						imgViewDealerButtonPos2.setVisible(false);
+						imgViewDealerButtonPos3.setVisible(false);
+						imgViewDealerButtonPos4.setVisible(false);}}
+		
+	
 	}
 	@FXML
 	void btnStart_Click(ActionEvent event) {

@@ -9,12 +9,6 @@
    <top>
       <MenuBar fx:id="mb" prefHeight="0.0" prefWidth="1064.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Betting rules">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Pot Limit" />
-                  <MenuItem mnemonicParsing="false" text="No Limit" />
-            </items>
-          </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />

@@ -171,7 +171,7 @@ public class PokerHub extends Hub {
 						if ((HubGamePlay.getPlayerByPosition(n) != null)
 								&& ((HubGamePlay.getPlayerHand(new GamePlayPlayerHand(HubGamePlay, HubGamePlay.getPlayerByPosition(n)).getHand()))) //if player hand is not folded
 										.isFolded() == false) {
-									HubGamePlay.getPlayerHand(new GamePlayPlayerHand(HubGamePlay, HubGamePlay.getPlayerByPosition(n)).getHand())//getPlayer method to finish getPlayerHand
+									HubGamePlay.getPlayerHand(new GamePlayPlayerHand(HubGamePlay, HubGamePlay.getPlayerByPosition(n)).getHand())
 											.Draw(HubGamePlay.getGameDeck());
 								}
 					}

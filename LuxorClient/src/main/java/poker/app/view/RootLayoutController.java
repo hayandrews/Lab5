@@ -21,6 +21,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import poker.app.MainApp;
 import pokerBase.Card;
+import pokerEnums.eBet;
 import pokerEnums.eGame;
 import pokerEnums.eRank;
 import pokerEnums.eSuit;
@@ -43,6 +44,9 @@ public class RootLayoutController implements Initializable {
 
 	@FXML
 	private Menu mnuGame;
+	
+	@FXML
+	private Menu mnuRule;
 
 
 	public String getRuleName()
@@ -78,8 +82,6 @@ public class RootLayoutController implements Initializable {
 	public void BuildMenus()
 	{
 
-		
-		
 		Menu mnuGame = new Menu();
 		mnuGame.setText("Pick Game");
 		mb.getMenus().add(0,mnuGame);
@@ -97,6 +99,22 @@ public class RootLayoutController implements Initializable {
 			mnuGame.getItems().add(rmi);
 		}
 		
+		Menu mnuRule = new Menu();
+		mnuRule.setText("Betting Rules");
+		mb.getMenus().add(0,mnuRule);
+				
+		ToggleGroup tglGrpBet = new ToggleGroup();
+		
+		for (eBet eBet : eBet.values()) {
+			RadioMenuItem rmi = new RadioMenuItem(eBet.toString());
+			rmi.setId("BettingRules" + String.valueOf(eBet.getRule()));
+			rmi.setToggleGroup(tglGrpBet);
+			if (eBet.getDefault())
+			{
+				rmi.setSelected(true);
+			}
+			mnuRule.getItems().add(rmi);
+		}
 
 		
 		//	TODO - Lab #5...  Add a new menu item that will display the betting rules...

@@ -79,10 +79,10 @@ public class PokerHub extends Hub {
 				
 				//	Determine which game is selected (from RootLayoutController)
 				//		1 line of code
-				
+				eGame game = act.geteGame();
 				//	Get the Rule based on the game selected
 				//		1 line of code
-				Rule rle = new Rule(act.geteGame());
+				Rule rle = new Rule(game);
 			
 				//	The table should eventually allow multiple instances of 'GamePlay'...
 				//		Each game played is an instance of 'GamePlay'...
@@ -96,7 +96,7 @@ public class PokerHub extends Hub {
 				//	Start a new instance of GamePlay, based on rule set and Dealer (Player.PlayerID)
 				//		1 line of code
 				
-				HubGamePlay = new GamePlay(rle, p);
+				HubGamePlay = new GamePlay(rle, p.getPlayerID());
 				
 				//	There are 1+ players seated at the table... add these players to the game
 				//		< 5 lines of code
@@ -122,7 +122,10 @@ public class PokerHub extends Hub {
 				
 				//HubGamePlay.setPlayerNextToAct(HubGamePlay.getPlaye...
 				//GamePlay.GetOrder(p.getiPlayerPosition()))));
-				
+				HubGamePlay.setPlayerNextToAct(HubGamePlay.getPlayerByPosition(GamePlay.NextPosition(p.getiPlayerPosition(), GamePlay.GetOrder(p.getiPlayerPosition()))));
+
+				//I'm not sure if we need this code below, because its more complex then what I believe needs to be done
+				//Check my code above, I think that might be the right direction but I'd like someone to make sure
 				HubGamePlay.setPlayerNextToAct(HubGamePlay.ComputePlayer);
 				
 				System.out.println("Dealer: " + p.getPlayerName());

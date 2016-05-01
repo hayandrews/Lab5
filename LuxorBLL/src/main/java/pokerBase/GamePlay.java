@@ -8,23 +8,19 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.UUID;
 
-import pokerEnums.eDrawCount;
-//might be missing a couple imports
 public class GamePlay implements Serializable   {
 
 	private UUID GameID;
+	//private UUID PlayerID_NextToAct = null;
 	private HashMap<UUID, Player> hmGamePlayers = new HashMap<UUID, Player>();
-	//private HashMap <UUID, Hand> hmGamePlayerHand = new HashMap<UUID, Hand>();
-	private ArrayList<GamePlayPlayerHand> GamePlayerHand = new ArrayList<GamePlayPlayerHand>(); //Don't see either of these in vid
-	private ArrayList<GamePlayPlayerHand> GameCommonHand = new ArrayList<GamePlayPlayerHand>(); //-^
-	//private Hand CommonHand = new Hand();
+	private ArrayList<GamePlayPlayerHand> GamePlayerHand = new ArrayList<GamePlayPlayerHand>();
+	private ArrayList<GamePlayPlayerHand> GameCommonHand = new ArrayList<GamePlayPlayerHand>();
 	private Rule rle;
 	private Deck GameDeck = null;
-	private UUID GameDealer = null; //private Player GameDealer = null;
+	private UUID GameDealer = null;
 	private int[] iActOrder = null;
 	private Player PlayerNextToAct = null;
 	
-	private eDrawCount DrawCnt;
 	
 	public GamePlay(Rule rle, UUID GameDealerID)
 	{
@@ -52,13 +48,6 @@ public class GamePlay implements Serializable   {
 
 	public void setGamePlayers(HashMap<UUID, Player> gamePlayers) {
 		this.hmGamePlayers = new HashMap<UUID, Player>(gamePlayers);
-		
-		Iterator it = getGamePlayers().entrySet().iterator();
-		while (it.hasNext()) {
-			Map.Entry pair = (Map.Entry) it.next();
-			Player p = (Player)pair.getValue();
-			this.addGamePlayPlayerHand(p.getPlayerID());
-		}
 	}
 	
 	public void addPlayerToGame(Player p)
@@ -103,29 +92,7 @@ public class GamePlay implements Serializable   {
 	public void setiActOrder(int[] iActOrder) {
 		this.iActOrder = iActOrder;
 	}
-	
-	/*Jessica - I'm not sure what this is, but it was in his at this spot
-	 * public eDrawCount getDrawCnt() {
-		return DrawnCnt;
-	}
-	 * public void setDrawCnt(eDrawCount nextDraw) {
-		DrawCnt = nextDraw;
-	}
-	 * public Player ConputePlayerNextToAct(int iCurrentPosition)...
-	{
-		int [] iNextOrder = GetOrder(iCurrentPosition);
-		
-		for (int i : iNextOrder)
-		{
-			if (getPlayerByPosition(i) != null)
-			{
-				if (i == iCurrentPosition)
-					return null;
-				else 
-					
-			}
-		}
-	}*/
+
 	
 	public Player getPlayerNextToAct() {
 		return PlayerNextToAct;
@@ -187,16 +154,6 @@ public class GamePlay implements Serializable   {
 		}
 		
 		return pl;
-	}
-	
-	public Hand getPlayerHand(Hand hand){
-		return hand;
-		/*TODO might need to return a different kind of object*/
-	}
-	
-	public Hand getCommonHand() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	/*
 	public GamePlayPlayerHand FindCommonHand(GamePlay gme)

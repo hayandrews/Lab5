@@ -124,71 +124,14 @@ public class PokerHub extends Hub {
 				//GamePlay.GetOrder(p.getiPlayerPosition()))));
 				HubGamePlay.setPlayerNextToAct(HubGamePlay.getPlayerByPosition(GamePlay.NextPosition(p.getiPlayerPosition(), GamePlay.GetOrder(p.getiPlayerPosition()))));
 
-				//I'm not sure if we need this code below, because its more complex then what I believe needs to be done
-				//Check my code above, I think that might be the right direction but I'd like someone to make sure
-				HubGamePlay.setPlayerNextToAct(HubGamePlay.ComputePlayer);
-				
-				System.out.println("Dealer: " + p.getPlayerName());
-				System.out.println("Next To Act: " + HubGamePlay.getPlayerNextToAct());
-				
-				if (p == HubGamePlay.getPlayerNextToAct()) {
-					try {
-						throw new Exception("Dealer and next to act are the same?");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				
-				// set the draw to the first draw
-				HubGamePlay.setDrawCnt(eDrawCount.FIRST);
-				
-				// try to deal cards... this can potentially throw...
-				try {
-					DealCards(HubGamePlay.getRule().getCardDraw(HubGamePlay...));
-				} catch (DeckException e) {
-					e.printStackTrace();
-				}
-				
-				//	Send the state of the game back to the players
-				System.out.println("Sending Start back to Client");
+//				Send the state of the game back to the players
 				sendToAll(HubGamePlay);
 				break;
 			case Deal:
-
-				break;
-			}
-			
-			//System.out.println("Message Received by Hub");
-			
-		}
-	}
-
-		private void DealCards(CardDraw cd) throws DeckException {
-			for (int i = 0; i < cd.getCardCountDrawn().getCardCount(); i++)
-			{
-				if (cd.getCardDestination() == eCardDestination.Player) {
-					for (int n : HubGamePlay.getiActOrder()) {
-						// If Player at the position exists... and the their hand
-						// isn't folded, deal a card
-						if ((HubGamePlay.getPlayerByPosition(n) != null)
-								&& ((HubGamePlay.getPlayerHand(new GamePlayPlayerHand(HubGamePlay, HubGamePlay.getPlayerByPosition(n)).getHand()))) //if player hand is not folded
-										.isFolded() == false) {
-									HubGamePlay.getPlayerHand(new GamePlayPlayerHand(HubGamePlay, HubGamePlay.getPlayerByPosition(n)).getHand())
-											.Draw(HubGamePlay.getGameDeck());
-								}
-					}
-
-				}
-				else if (cd.getCardDestination() == eCardDestination.Community)
-				{
-					HubGamePlay.getCommonHand().Draw(HubGamePlay.getGameDeck());
-				}
-
+				
 				/*
 				int iCardstoDraw[] = HubGamePlay.getRule().getiCardsToDraw();
 				int iDrawCount = iCardstoDraw[iDealNbr];
-
 				for (int i = 0; i<iDrawCount; i++)
 				{
 					try {
@@ -197,10 +140,12 @@ public class PokerHub extends Hub {
 						e.printStackTrace();
 					}
 				}
-				*/
+*/
+				break;
+			}
 		}
 
-		
+		//System.out.println("Message Received by Hub");
 	}
 
 }
